@@ -3,605 +3,425 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mechanic Shop Flooring - KMJK Group</title>
+    <title>Mechanic Shop Flooring | KMJK Epoxy Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --accent: #F97316;
+            --accent2: #D4A520;
+            --dark: #1A1210;
+            --card: rgba(255,255,255,0.04);
+            --border: rgba(255,255,255,0.08);
+            --text: #E2E8F0;
+            --muted: #94A3B8;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0d0d0d;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        /* Tire tread pattern background */
-        .tire-pattern {
-            background: 
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 20px,
-                    rgba(30, 30, 30, 0.5) 20px,
-                    rgba(30, 30, 30, 0.5) 22px
-                ),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 8px,
-                    rgba(20, 20, 20, 0.8) 8px,
-                    rgba(20, 20, 20, 0.8) 10px
-                ),
-                linear-gradient(135deg, #0a0a0a 0%, #151515 50%, #0d0d0d 100%);
-            background-size: 100% 100%, 100% 100%, 100% 100%;
-        }
-
-        /* Page container */
-        .page {
-            min-height: 100vh;
-            padding: 60px 80px;
-            position: relative;
-            page-break-after: always;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* Chrome gradient text */
-        .chrome-text {
-            background: linear-gradient(180deg, #f5f5f5 0%, #b8b8b8 50%, #808080 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Red/Orange accent */
-        .accent-red {
-            color: #ff4d4d;
-        }
-
-        .accent-orange {
-            color: #ff6b35;
-        }
-
-        /* Header styles */
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .headline {
-            font-size: 3.5em;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(90deg, #ff6b35, #ff4d4d, #ff6b35);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            text-shadow: 0 0 40px rgba(255, 75, 75, 0.3);
-        }
-
-        .subheadline {
-            font-size: 1.8em;
-            color: #e0e0e0;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        /* Section styles */
-        .section-title {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #ff6b35;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 3px solid #ff4d4d;
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-
-        /* Pain points grid */
-        .pain-points {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .pain-point {
-            background: rgba(40, 40, 40, 0.9);
-            border-left: 4px solid #ff4d4d;
-            padding: 20px;
-            border-radius: 0 8px 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .pain-point .icon {
-            font-size: 2em;
-            color: #ff4d4d;
-        }
-
-        .pain-point .text {
-            font-size: 1.1em;
-            color: #cccccc;
-        }
-
-        /* Solution box */
-        .solution-box {
-            background: linear-gradient(135deg, rgba(255, 75, 75, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
-            border: 2px solid #ff6b35;
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .solution-text {
-            font-size: 1.8em;
-            font-weight: 600;
-            color: #ffffff;
-            letter-spacing: 1px;
-        }
-
-        /* Tier cards */
-        .tiers-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .tier-card {
-            background: rgba(25, 25, 25, 0.95);
-            border: 2px solid #333;
-            border-radius: 12px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .tier-card:hover {
-            border-color: #ff6b35;
-            box-shadow: 0 0 30px rgba(255, 107, 53, 0.2);
-        }
-
-        .tier-card.economy {
-            border-top: 4px solid #6b7280;
-        }
-
-        .tier-card.professional {
-            border-top: 4px solid #3b82f6;
-        }
-
-        .tier-card.premium {
-            border-top: 4px solid #f59e0b;
-        }
-
-        .tier-card.special {
-            border-top: 4px solid #ff4d4d;
-            background: linear-gradient(135deg, rgba(255, 75, 75, 0.05) 0%, rgba(25, 25, 25, 0.95) 100%);
-        }
-
-        .tier-title {
-            font-size: 1.5em;
-            font-weight: 800;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .tier-subtitle {
-            font-size: 0.9em;
-            color: #888;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .tier-features {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .tier-features li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .tier-features li::before {
-            content: "✓";
-            color: #ff6b35;
-            font-weight: bold;
-        }
-
-        .tier-price {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #ff6b35;
-            text-align: center;
-            padding-top: 15px;
-            border-top: 2px solid rgba(255, 107, 53, 0.3);
-        }
-
-        .tier-price span {
-            font-size: 0.6em;
-            color: #888;
-        }
-
-        /* Chemical resistance chart */
-        .chart-container {
-            background: rgba(25, 25, 25, 0.95);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .chart-title {
-            font-size: 1.4em;
-            font-weight: 700;
-            color: #ff6b35;
-            margin-bottom: 25px;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .chart-grid {
-            display: grid;
-            grid-template-columns: 150px repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .chart-header {
-            font-weight: 700;
-            text-align: center;
-            padding: 10px;
-            color: #e0e0e0;
-            text-transform: uppercase;
-            font-size: 0.85em;
-        }
-
-        .chart-row {
-            display: contents;
-        }
-
-        .chart-label {
-            padding: 12px 10px;
-            font-size: 0.9em;
-            color: #cccccc;
-        }
-
-        .chart-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.85em;
-            text-transform: uppercase;
-        }
-
-        .chart-bar.excellent {
-            background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
-            color: #fff;
-        }
-
-        .chart-bar.good {
-            background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
-            color: #fff;
-        }
-
-        .chart-bar.fair {
-            background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
-            color: #fff;
-        }
-
-        .chart-bar.poor {
-            background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
-            color: #fff;
-        }
-
-        /* Icons row */
-        .icons-row {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
-        }
-
-        .icon-item {
-            text-align: center;
-            font-size: 3em;
-            color: #ff6b35;
-        }
-
-        .icon-label {
-            display: block;
-            font-size: 0.7em;
-            color: #888;
-            text-transform: uppercase;
-            margin-top: 5px;
-            letter-spacing: 1px;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px;
-            background: linear-gradient(90deg, rgba(255, 75, 75, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
-            border-top: 2px solid #ff6b35;
-            font-size: 1em;
-            color: #a0a0a0;
-            letter-spacing: 1px;
-        }
-
-        .footer strong {
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        .footer a {
-            color: #ff6b35;
-            text-decoration: none;
-        }
-
-        /* Print styles */
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        @page { size:8.5in 11in; margin:0; }
         @media print {
-            .page {
-                page-break-after: always;
-                min-height: 100vh;
-            }
-            
-            body {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+            body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+            .page { box-shadow:none !important; }
+        }
+        body { font-family:'Inter',system-ui,sans-serif; background:#0F0D0B; color:var(--text); }
+        .page {
+            width:8.5in; min-height:11in; padding:0.55in 0.6in;
+            position:relative; overflow:hidden;
+            page-break-after:always; margin:0 auto;
+        }
+        .page:last-child { page-break-after:auto; }
+
+        .p1-bg {
+            position:absolute; inset:0; z-index:0;
+            background:
+                radial-gradient(ellipse 70% 50% at 15% 25%, rgba(249,115,22,0.14), transparent),
+                radial-gradient(ellipse 60% 40% at 85% 75%, rgba(212,165,32,0.08), transparent),
+                linear-gradient(180deg, #1A1210 0%, #1F1814 100%);
+        }
+        .p1-pattern {
+            position:absolute; inset:0; z-index:0; opacity:0.03;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.3) 20px, rgba(255,255,255,0.3) 21px);
+        }
+        .accent-bar {
+            position:absolute; top:0; left:0; right:0; height:4px; z-index:2;
+            background:linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
+        }
+        .content { position:relative; z-index:1; height:100%; display:flex; flex-direction:column; }
+
+        .sales-badge {
+            display:inline-flex; align-items:center; gap:6px;
+            background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.25);
+            border-radius:20px; padding:4px 14px; font-size:0.65rem; font-weight:600;
+            color:var(--accent); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:10px;
+        }
+        .p1-title {
+            font-family:'Space Grotesk',sans-serif; font-size:1.9rem; font-weight:700;
+            color:#fff; line-height:1.15; margin-bottom:4px;
+        }
+        .p1-title span { color:var(--accent); }
+        .p1-subtitle { color:var(--muted); font-size:0.82rem; margin-bottom:18px; }
+
+        .section-label {
+            font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:2px;
+            color:var(--accent2); margin-bottom:8px; display:flex; align-items:center; gap:6px;
+        }
+        .section-label::after {
+            content:''; flex:1; height:1px;
+            background:linear-gradient(90deg, rgba(212,165,32,0.3), transparent);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .page {
-                padding: 30px 20px;
-            }
-            
-            .headline {
-                font-size: 2em;
-            }
-            
-            .subheadline {
-                font-size: 1.2em;
-            }
-            
-            .pain-points {
-                grid-template-columns: 1fr;
-            }
-            
-            .tiers-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .chart-grid {
-                grid-template-columns: 100px repeat(4, 1fr);
-                gap: 5px;
-            }
-            
-            .chart-label {
-                font-size: 0.75em;
-            }
-            
-            .chart-bar {
-                font-size: 0.7em;
-            }
+        .kyc-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
+        .kyc-card {
+            background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px 12px;
         }
+        .kyc-card h4 { font-size:0.72rem; color:var(--accent); font-weight:600; margin-bottom:3px; }
+        .kyc-card p { font-size:0.68rem; color:var(--muted); line-height:1.45; }
+
+        .pain-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
+        .pain-item {
+            display:flex; gap:8px; align-items:flex-start;
+            background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.12);
+            border-radius:6px; padding:8px 10px;
+        }
+        .pain-icon {
+            width:22px; height:22px; border-radius:50%; flex-shrink:0;
+            background:rgba(239,68,68,0.15); display:flex; align-items:center; justify-content:center;
+            font-size:0.55rem; color:#EF4444;
+        }
+        .pain-item p { font-size:0.68rem; color:#FDA4AF; line-height:1.35; }
+
+        .script-box {
+            background:linear-gradient(135deg, rgba(249,115,22,0.08), rgba(212,165,32,0.06));
+            border:1px solid rgba(249,115,22,0.15); border-radius:8px;
+            padding:10px 14px; margin-bottom:8px;
+        }
+        .script-tier {
+            font-size:0.6rem; font-weight:700; color:var(--accent2);
+            text-transform:uppercase; letter-spacing:1px; margin-bottom:3px;
+        }
+        .script-box blockquote {
+            font-size:0.7rem; color:#fff; font-style:italic; line-height:1.4;
+            border-left:2px solid var(--accent); padding-left:10px;
+        }
+
+        .stats-row { display:flex; gap:10px; margin-bottom:14px; }
+        .stat-card {
+            flex:1; text-align:center; padding:10px 6px;
+            background:var(--card); border:1px solid var(--border); border-radius:8px;
+        }
+        .stat-num {
+            font-family:'Space Grotesk',sans-serif; font-size:1.3rem; font-weight:700;
+            background:linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+        .stat-label { font-size:0.56rem; color:var(--muted); margin-top:2px; }
+
+        .objection-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+        .obj-item { font-size:0.65rem; line-height:1.4; }
+        .obj-q { color:#FBBF24; font-weight:600; margin-bottom:1px; }
+        .obj-a { color:var(--muted); }
+
+        .footer {
+            margin-top:auto; padding-top:10px; border-top:1px solid var(--border);
+            display:flex; justify-content:space-between; align-items:center;
+            font-size:0.65rem; color:var(--muted);
+        }
+        .footer a { color:var(--accent2); text-decoration:none; }
+
+        /* PAGE 2 */
+        .p2-bg {
+            position:absolute; inset:0; z-index:0;
+            background:
+                radial-gradient(ellipse 70% 50% at 75% 15%, rgba(249,115,22,0.12), transparent),
+                radial-gradient(ellipse 50% 60% at 25% 85%, rgba(212,165,32,0.08), transparent),
+                linear-gradient(180deg, #1A1210 0%, #1F1814 100%);
+        }
+        .p2-stripe {
+            position:absolute; top:0; right:0; width:200px; height:100%; z-index:0; opacity:0.03;
+            background:repeating-linear-gradient(-45deg, transparent, transparent 15px, rgba(249,115,22,1) 15px, rgba(249,115,22,1) 16px);
+        }
+
+        .p2-hero { text-align:center; margin-bottom:16px; }
+        .p2-badge {
+            display:inline-flex; align-items:center; gap:5px;
+            background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.2);
+            border-radius:20px; padding:3px 12px; font-size:0.58rem; font-weight:600;
+            color:var(--accent); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:8px;
+        }
+        .p2-hero h1 {
+            font-family:'Space Grotesk',sans-serif; font-size:2.1rem; font-weight:700;
+            color:#fff; line-height:1.1; margin-bottom:6px;
+        }
+        .p2-hero h1 span {
+            background:linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+        .p2-hero p { color:var(--muted); font-size:0.78rem; max-width:480px; margin:0 auto; }
+
+        .tiers { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
+        .tier {
+            background:var(--card); border:1px solid var(--border); border-radius:10px;
+            padding:14px; position:relative; overflow:hidden;
+        }
+        .tier-bar { position:absolute; top:0; left:0; right:0; height:3px; }
+        .t1 .tier-bar { background:var(--muted); }
+        .t2 .tier-bar { background:var(--accent); }
+        .t3 .tier-bar { background:linear-gradient(90deg, var(--accent), var(--accent2)); }
+        .ts .tier-bar { background:linear-gradient(90deg, #A855F7, var(--accent), #A855F7); height:4px; }
+        .tier-head { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+        .tier-icon {
+            width:30px; height:30px; border-radius:8px; display:flex;
+            align-items:center; justify-content:center; font-size:0.75rem; font-weight:700;
+        }
+        .t1 .tier-icon { background:rgba(148,163,184,0.15); color:var(--muted); }
+        .t2 .tier-icon { background:rgba(249,115,22,0.15); color:var(--accent); }
+        .t3 .tier-icon { background:rgba(212,165,32,0.15); color:var(--accent2); }
+        .ts .tier-icon { background:rgba(168,85,247,0.15); color:#A855F7; }
+        .tier-name { font-size:0.85rem; font-weight:700; color:#fff; }
+        .tier-tag { font-size:0.55rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+        .tier ul { list-style:none; margin:6px 0; }
+        .tier li {
+            font-size:0.67rem; color:var(--text); padding:2.5px 0 2.5px 14px;
+            position:relative; line-height:1.4;
+        }
+        .tier li::before {
+            content:''; position:absolute; left:0; top:8px; width:5px; height:5px; border-radius:50%;
+        }
+        .t1 li::before { background:var(--muted); }
+        .t2 li::before { background:var(--accent); }
+        .t3 li::before { background:var(--accent2); }
+        .ts li::before { background:#A855F7; }
+        .tier-price {
+            margin-top:8px; padding-top:8px; border-top:1px solid var(--border);
+            font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:700; color:#fff;
+        }
+        .tier-price span { font-size:0.65rem; font-weight:400; color:var(--muted); }
+
+        .compare {
+            background:rgba(249,115,22,0.04); border:1px solid rgba(249,115,22,0.1);
+            border-radius:8px; padding:10px 12px; margin-bottom:12px;
+        }
+        .compare h3 {
+            font-size:0.75rem; font-weight:700; color:var(--accent);
+            text-align:center; margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;
+        }
+        .compare table { width:100%; border-collapse:collapse; font-size:0.65rem; }
+        .compare th {
+            text-align:left; padding:5px 6px; color:var(--accent2);
+            border-bottom:1px solid rgba(212,165,32,0.15); font-size:0.58rem;
+            text-transform:uppercase; letter-spacing:0.5px;
+        }
+        .compare td { padding:4px 6px; color:var(--text); border-bottom:1px solid var(--border); }
+        .compare td:first-child { font-weight:600; color:var(--accent); }
+
+        .cta {
+            background:linear-gradient(135deg, rgba(249,115,22,0.1), rgba(212,165,32,0.08));
+            border:1px solid rgba(249,115,22,0.2); border-radius:10px;
+            padding:14px 20px; text-align:center;
+        }
+        .cta h3 {
+            font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:700;
+            color:#fff; margin-bottom:4px;
+        }
+        .cta p { font-size:0.72rem; color:var(--muted); margin-bottom:8px; }
+        .cta-contacts {
+            display:flex; justify-content:center; gap:24px; font-size:0.72rem; color:var(--text);
+        }
+        .cta-contacts i { color:var(--accent2); margin-right:4px; }
+        .cta-contacts a { color:var(--accent); text-decoration:none; }
     </style>
 </head>
 <body>
-    <!-- PAGE 1: Problem + Solution -->
-    <div class="page tire-pattern">
-        <div class="header">
-            <h1 class="headline">Built for Oil, Grease, and 10,000 lb Lifts</h1>
-            <h2 class="subheadline">The only floor that survives what your shop throws at it</h2>
-        </div>
 
-        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
-            <div class="icons-row">
-                <div class="icon-item">
-                    <span>🔧</span>
-                    <span class="icon-label">Tools</span>
-                </div>
-                <div class="icon-item">
-                    <span>🚗</span>
-                    <span class="icon-label">Vehicles</span>
-                </div>
-                <div class="icon-item">
-                    <span>💧</span>
-                    <span class="icon-label">Fluids</span>
-                </div>
-                <div class="icon-item">
-                    <span>🔥</span>
-                    <span class="icon-label">Heat</span>
-                </div>
+<!-- PAGE 1: JOSUE'S SALES GUIDE -->
+<div class="page">
+    <div class="p1-bg"></div>
+    <div class="p1-pattern"></div>
+    <div class="accent-bar"></div>
+    <div class="content">
+
+        <div class="sales-badge"><i class="fas fa-lock"></i> Internal Sales Guide — Do Not Share</div>
+        <div class="p1-title">Selling <span>Mechanic Shop</span> Floors</div>
+        <div class="p1-subtitle">Auto repair, tire shops, oil change bays, body shops — high-chemical, high-abuse environments</div>
+
+        <div class="section-label"><i class="fas fa-crosshairs"></i> Know Your Customer</div>
+        <div class="kyc-grid">
+            <div class="kyc-card">
+                <h4><i class="fas fa-wrench"></i> Who's Buying</h4>
+                <p>Shop owners, franchise operators, fleet managers. They want easy cleanup, professional image, and a floor that survives daily chemical abuse.</p>
             </div>
-
-            <h3 class="section-title">The Problem with Concrete</h3>
-            
-            <div class="pain-points">
-                <div class="pain-point">
-                    <span class="icon">🛢️</span>
-                    <span class="text">Concrete absorbs oil, transmission fluid, brake cleaner</span>
-                </div>
-                <div class="pain-point">
-                    <span class="icon">⏰</span>
-                    <span class="text">Stains become permanent within days</span>
-                </div>
-                <div class="pain-point">
-                    <span class="icon">🚙</span>
-                    <span class="text">Hot tires lift cheap coatings</span>
-                </div>
-                <div class="pain-point">
-                    <span class="icon">⚠️</span>
-                    <span class="text">Forklifts and transmission jacks crack inferior floors</span>
-                </div>
-                <div class="pain-point" style="grid-column: span 2;">
-                    <span class="icon">⚡</span>
-                    <span class="text">Slip hazards with wet concrete create dangerous work conditions</span>
-                </div>
-            </div>
-
-            <div class="solution-box">
-                <p class="solution-text">✨ Chemical-resistant epoxy systems that laugh at solvents ✨</p>
+            <div class="kyc-card">
+                <h4><i class="fas fa-dollar-sign"></i> Budget Range</h4>
+                <p>$4–$10/sq ft installed. Most shops are 1,500–4,000 sq ft. Total job: $6K–$40K. Push Tier 2 — best value for chemical resistance.</p>
             </div>
         </div>
 
-        <div class="footer">
-            <strong>KMJK Group</strong> | Professional Epoxy Solutions | <a href="https://kmjk.pro">kmjk.pro</a> | 772-323-3776
-        </div>
-    </div>
-
-    <!-- PAGE 2: Tier Breakdown -->
-    <div class="page tire-pattern">
-        <div class="header">
-            <h1 class="headline" style="font-size: 2.5em;">Choose Your Durability Level</h1>
-            <h2 class="subheadline">From basic shops to dealership-grade showrooms</h2>
-        </div>
-
-        <div style="flex: 1; display: flex; flex-direction: column;">
-            <div class="tiers-container">
-                <!-- Tier C -->
-                <div class="tier-card economy">
-                    <div class="tier-title" style="color: #9ca3af;">Tier C - Economy</div>
-                    <div class="tier-subtitle">Basic Shop</div>
-                    <ul class="tier-features">
-                        <li>Standard Bisphenol A epoxy</li>
-                        <li>Oil and grease resistant</li>
-                        <li><strong>5-year lifespan</strong></li>
-                        <li>Light chemical resistance</li>
-                        <li>Heat: 140°F max</li>
-                        <li>Small independent shops, hobby garages</li>
-                    </ul>
-                    <div class="tier-price">$4-5 <span>/sq ft installed</span></div>
-                </div>
-
-                <!-- Tier B -->
-                <div class="tier-card professional">
-                    <div class="tier-title" style="color: #3b82f6;">Tier B - Professional</div>
-                    <div class="tier-subtitle">Standard Repair Shop</div>
-                    <ul class="tier-features">
-                        <li>Bisphenol A + enhanced chemical package</li>
-                        <li>Hot-tire resistant formulation</li>
-                        <li><strong>7-10 year lifespan</strong></li>
-                        <li>Anti-slip texture standard</li>
-                        <li>Heat: 180°F max</li>
-                        <li>General repair, quick lube, tire centers</li>
-                    </ul>
-                    <div class="tier-price">$6-8 <span>/sq ft installed</span></div>
-                </div>
-
-                <!-- Tier A -->
-                <div class="tier-card premium">
-                    <div class="tier-title" style="color: #f59e0b;">Tier A - Premium</div>
-                    <div class="tier-subtitle">Full-Service Shop</div>
-                    <ul class="tier-features">
-                        <li><strong>Novolac epoxy base</strong></li>
-                        <li>Skydrol and brake fluid resistant</li>
-                        <li><strong>10-15 year lifespan</strong></li>
-                        <li>Heavy impact resistance</li>
-                        <li>Heat: 300°F (welding sparks OK)</li>
-                        <li>Dealership bays, heavy equipment repair</li>
-                    </ul>
-                    <div class="tier-price">$9-12 <span>/sq ft installed</span></div>
-                </div>
-
-                <!-- Special Tier -->
-                <div class="tier-card special">
-                    <div class="tier-title" style="color: #ff4d4d;">Special Tier</div>
-                    <div class="tier-subtitle">Dealership Grade</div>
-                    <ul class="tier-features">
-                        <li>Full Novolac + polyaspartic topcoat</li>
-                        <li>Resistant to <strong>ALL automotive chemicals</strong></li>
-                        <li><strong>15+ year warranty</strong></li>
-                        <li>UV stable (showroom-ready)</li>
-                        <li>Anti-fatigue properties</li>
-                        <li>New car dealerships, luxury auto, museums</li>
-                    </ul>
-                    <div class="tier-price">$14-18 <span>/sq ft installed</span></div>
-                </div>
+        <div class="section-label"><i class="fas fa-exclamation-triangle"></i> The Problems They Have</div>
+        <div class="pain-grid">
+            <div class="pain-item">
+                <div class="pain-icon"><i class="fas fa-oil-can"></i></div>
+                <p><strong>Oil, brake fluid, transmission fluid</strong> soak into bare concrete. Permanent stains. Slip hazards.</p>
             </div>
+            <div class="pain-item">
+                <div class="pain-icon"><i class="fas fa-fire"></i></div>
+                <p><strong>Hot tire pickup.</strong> Tires at 200°F+ peel cheap coatings right off. Big-box epoxy can't handle it.</p>
+            </div>
+            <div class="pain-item">
+                <div class="pain-icon"><i class="fas fa-broom"></i></div>
+                <p><strong>Cleaning is a nightmare.</strong> Porous concrete absorbs everything. Degreasing takes hours per bay.</p>
+            </div>
+            <div class="pain-item">
+                <div class="pain-icon"><i class="fas fa-store"></i></div>
+                <p><strong>Customers judge by the floor.</strong> A dirty, stained shop looks unprofessional. Clean floors = trust = revenue.</p>
+            </div>
+        </div>
 
-            <!-- Chemical Resistance Chart -->
-            <div class="chart-container">
-                <h3 class="chart-title">🧪 Chemical Resistance Rating</h3>
-                <div class="chart-grid">
-                    <div class="chart-header">Chemical</div>
-                    <div class="chart-header" style="color: #9ca3af;">Tier C</div>
-                    <div class="chart-header" style="color: #3b82f6;">Tier B</div>
-                    <div class="chart-header" style="color: #f59e0b;">Tier A</div>
-                    <div class="chart-header" style="color: #ff4d4d;">Special</div>
+        <div class="section-label"><i class="fas fa-comments-dollar"></i> How to Sell Each Tier</div>
+        <div class="script-box">
+            <div class="script-tier">Tier 1 — Economy</div>
+            <blockquote>"Basic protection — seals the concrete so oil can't soak in. Solid gray. Gets the job done if budget is tight. Good for storage areas or a shop that's getting sold."</blockquote>
+        </div>
+        <div class="script-box">
+            <div class="script-tier">Tier 2 — Professional (Best Value)</div>
+            <blockquote>"This is what 90% of shops should get. UV-protected so it stays clear near bay doors. The defoamer gives you a glass-smooth surface that wipes clean with a mop. We can add ceramic for extra scratch resistance from jacks and tools."</blockquote>
+        </div>
+        <div class="script-box">
+            <div class="script-tier">Tier 3 — Premium (Novolac)</div>
+            <blockquote>"This is the race shop / high-end dealership floor. Novolac resin laughs at brake fluid, transmission fluid, even battery acid. Heat rated to 350°F — hot tires won't touch it. Polyaspartic topcoat means you're back to work in 4 hours."</blockquote>
+        </div>
 
-                    <div class="chart-row">
-                        <div class="chart-label">Motor Oil</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                    </div>
+        <div class="section-label"><i class="fas fa-chart-line"></i> Numbers That Close Deals</div>
+        <div class="stats-row">
+            <div class="stat-card"><div class="stat-num">350°F</div><div class="stat-label">Heat Rated<br>(Tier 3)</div></div>
+            <div class="stat-card"><div class="stat-num">90%</div><div class="stat-label">Faster<br>Cleanup</div></div>
+            <div class="stat-card"><div class="stat-num">10+</div><div class="stat-label">Year<br>Lifespan</div></div>
+            <div class="stat-card"><div class="stat-num">4 hrs</div><div class="stat-label">Return to<br>Service</div></div>
+        </div>
 
-                    <div class="chart-row">
-                        <div class="chart-label">Transmission Fluid</div>
-                        <div class="chart-bar good">Good</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                    </div>
-
-                    <div class="chart-row">
-                        <div class="chart-label">Brake Fluid</div>
-                        <div class="chart-bar fair">Fair</div>
-                        <div class="chart-bar good">Good</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                    </div>
-
-                    <div class="chart-row">
-                        <div class="chart-label">Brake Cleaner</div>
-                        <div class="chart-bar poor">Poor</div>
-                        <div class="chart-bar good">Good</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                    </div>
-
-                    <div class="chart-row">
-                        <div class="chart-label">Skydrol</div>
-                        <div class="chart-bar poor">None</div>
-                        <div class="chart-bar poor">Poor</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                    </div>
-
-                    <div class="chart-row">
-                        <div class="chart-label">Gasoline</div>
-                        <div class="chart-bar fair">Fair</div>
-                        <div class="chart-bar good">Good</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                        <div class="chart-bar excellent">Excellent</div>
-                    </div>
-                </div>
+        <div class="section-label"><i class="fas fa-shield-halved"></i> Objection Handlers</div>
+        <div class="objection-grid">
+            <div class="obj-item">
+                <div class="obj-q">"I tried epoxy before and it peeled."</div>
+                <div class="obj-a">→ "Big-box epoxy is water-based, 50% solids. We use 100% solids with diamond-ground prep. It bonds to the concrete, not sits on top."</div>
+            </div>
+            <div class="obj-item">
+                <div class="obj-q">"Can't shut down my shop for days."</div>
+                <div class="obj-a">→ "We can do it bay-by-bay. Polyaspartic topcoat = 4hr cure. Start Friday night, drive on it Monday."</div>
             </div>
         </div>
 
         <div class="footer">
-            <strong>KMJK Group</strong> | Professional Epoxy Solutions | <a href="https://kmjk.pro">kmjk.pro</a> | 772-323-3776
+            <div>KMJK Group — Internal Sales Guide</div>
+            <div><a href="https://kmjk.pro">kmjk.pro</a> &nbsp;|&nbsp; 772-323-3776</div>
         </div>
     </div>
+</div>
+
+<!-- PAGE 2: CLIENT FLYER -->
+<div class="page">
+    <div class="p2-bg"></div>
+    <div class="p2-stripe"></div>
+    <div class="content">
+
+        <div class="p2-hero">
+            <div class="p2-badge"><i class="fas fa-wrench"></i> Automotive &amp; Mechanic Shop Flooring</div>
+            <h1>Built to Survive<br><span>Your Toughest Day</span></h1>
+            <p>Chemical-resistant, hot-tire rated epoxy systems that turn a grimy shop into a showroom. Wipe-clean surface. Professional image. Zero maintenance.</p>
+        </div>
+
+        <div class="tiers">
+            <div class="tier t1">
+                <div class="tier-bar"></div>
+                <div class="tier-head">
+                    <div class="tier-icon">1</div>
+                    <div><div class="tier-name">Economy</div><div class="tier-tag">Basic Seal</div></div>
+                </div>
+                <ul>
+                    <li>Standard epoxy — solid gray/tan</li>
+                    <li>Seals concrete against oil absorption</li>
+                    <li>Heat resistant to 140°F</li>
+                    <li>3–5 year lifespan</li>
+                    <li>Best for: storage, light-use bays</li>
+                </ul>
+                <div class="tier-price">$4–5 <span>/sq ft installed</span></div>
+            </div>
+
+            <div class="tier t2">
+                <div class="tier-bar"></div>
+                <div class="tier-head">
+                    <div class="tier-icon">2</div>
+                    <div><div class="tier-name">Professional</div><div class="tier-tag">Most Popular</div></div>
+                </div>
+                <ul>
+                    <li>UV-stabilized (HALS + UVA) — no yellowing</li>
+                    <li>Defoamed glass-smooth finish</li>
+                    <li>Resists oil, brake fluid, coolant</li>
+                    <li>Optional anti-slip aggregate</li>
+                    <li>7–10 year lifespan • 180°F rated</li>
+                </ul>
+                <div class="tier-price">$6–8 <span>/sq ft installed</span></div>
+            </div>
+
+            <div class="tier t3">
+                <div class="tier-bar"></div>
+                <div class="tier-head">
+                    <div class="tier-icon">3</div>
+                    <div><div class="tier-name">Premium</div><div class="tier-tag">Novolac + Polyaspartic</div></div>
+                </div>
+                <ul>
+                    <li>Novolac resin — resists battery acid</li>
+                    <li>350°F rated — hot tires no problem</li>
+                    <li>Ceramic microspheres for impact armor</li>
+                    <li>Polyaspartic topcoat — 4hr return</li>
+                    <li>10–15 year warranty</li>
+                </ul>
+                <div class="tier-price">$9–12 <span>/sq ft installed</span></div>
+            </div>
+
+            <div class="tier ts">
+                <div class="tier-bar"></div>
+                <div class="tier-head">
+                    <div class="tier-icon"><i class="fas fa-star"></i></div>
+                    <div><div class="tier-name">Custom</div><div class="tier-tag">Build Your Floor</div></div>
+                </div>
+                <ul>
+                    <li>Colored quartz for texture + grip</li>
+                    <li>Racing stripe lane markings</li>
+                    <li>Logo embedding in clear coat</li>
+                    <li>ESD (anti-static) for electronics bays</li>
+                    <li>Any combination of upgrades</li>
+                </ul>
+                <div class="tier-price">Custom <span>quote</span></div>
+            </div>
+        </div>
+
+        <div class="compare">
+            <h3><i class="fas fa-table"></i> At a Glance</h3>
+            <table>
+                <tr><th>Tier</th><th>Lifespan</th><th>Hot Tire</th><th>Chemical Resist</th><th>Cure Time</th></tr>
+                <tr><td>1 Economy</td><td>3–5 yrs</td><td>No</td><td>Basic</td><td>24 hrs</td></tr>
+                <tr><td>2 Professional</td><td>7–10 yrs</td><td>Moderate</td><td>Good</td><td>18 hrs</td></tr>
+                <tr><td>3 Premium</td><td>10–15 yrs</td><td>350°F rated</td><td>Excellent</td><td>4 hrs</td></tr>
+                <tr><td style="color:#A855F7">★ Custom</td><td>15+ yrs</td><td>500°F</td><td>Maximum</td><td>4 hrs</td></tr>
+            </table>
+        </div>
+
+        <div class="cta">
+            <h3>Your Shop Deserves a Floor That Performs</h3>
+            <p>Free on-site measurement. Bay-by-bay installation available — zero downtime.</p>
+            <div class="cta-contacts">
+                <div><i class="fas fa-phone"></i> <strong>772-323-3776</strong></div>
+                <div><i class="fas fa-envelope"></i> <a href="mailto:info@kmjk.pro">info@kmjk.pro</a></div>
+                <div><i class="fas fa-globe"></i> <a href="https://kmjk.pro">kmjk.pro</a></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>© 2026 KMJK Group — Jensen Beach, FL</div>
+            <div><a href="https://kmjk.pro">Professional Epoxy Solutions</a></div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

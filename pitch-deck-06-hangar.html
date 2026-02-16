@@ -3,692 +3,427 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aircraft Hangar Flooring - KMJK Group</title>
+    <title>Airport Hangar Flooring | KMJK Epoxy Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --accent: #64748B;
+            --accent2: #38BDF8;
+            --gold: #D4A520;
+            --dark: #0C0F1A;
+            --card: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.06);
+            --text: #CBD5E1;
+            --muted: #64748B;
         }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0f1a;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        .page {
-            width: 100%;
-            min-height: 100vh;
-            padding: 60px 50px;
-            position: relative;
-            overflow: hidden;
-            page-break-after: always;
-        }
-
-        /* Background with runway markings */
-        .page::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(135deg, rgba(10, 25, 47, 0.95) 0%, rgba(15, 35, 60, 0.92) 100%),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 400px,
-                    rgba(255, 255, 255, 0.03) 400px,
-                    rgba(255, 255, 255, 0.03) 420px
-                );
-            z-index: -2;
-        }
-
-        /* Aircraft silhouette */
-        .aircraft-silhouette {
-            position: absolute;
-            bottom: 100px;
-            right: -100px;
-            width: 600px;
-            height: 300px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 200" fill="rgba(255,255,255,0.02)"><path d="M480 100l-120-20-80-60-160 40 40 60-80 20 20 40 120-20 60 40-100 20 20 60 240-40 60-20z"/></svg>') no-repeat center center;
-            background-size: contain;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .header h1 {
-            font-size: 48px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 50%, #ff6b00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        .header .subheadline {
-            font-size: 22px;
-            color: #b8c5d6;
-            font-weight: 500;
-        }
-
-        /* Icons */
-        .icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #1a365d 0%, #2d4a6f 100%);
-            border-radius: 12px;
-            margin-right: 12px;
-            font-size: 24px;
-        }
-
-        /* Section styling */
-        .section {
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.6) 0%, rgba(20, 40, 70, 0.4) 100%);
-            border: 1px solid rgba(96, 130, 182, 0.3);
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 30px;
-            backdrop-filter: blur(10px);
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #ff6b00;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Pain points */
-        .pain-points {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .pain-point {
-            background: rgba(139, 0, 0, 0.15);
-            border-left: 4px solid #ff4444;
-            padding: 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .pain-point .icon {
-            background: linear-gradient(135deg, #8b0000 0%, #b22222 100%);
-            flex-shrink: 0;
-        }
-
-        .pain-point .text {
-            flex: 1;
-        }
-
-        .pain-point .text h4 {
-            color: #ff6b6b;
-            font-size: 16px;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .pain-point .text p {
-            color: #c8d4e6;
-            font-size: 14px;
-        }
-
-        /* Solution */
-        .solution {
-            background: linear-gradient(135deg, rgba(34, 139, 34, 0.2) 0%, rgba(0, 100, 0, 0.15) 100%);
-            border: 2px solid rgba(76, 175, 80, 0.5);
-            text-align: center;
-            padding: 50px 40px;
-        }
-
-        .solution h2 {
-            font-size: 32px;
-            color: #4caf50;
-            margin-bottom: 15px;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .solution p {
-            font-size: 20px;
-            color: #a8d5a2;
-            font-weight: 500;
-        }
-
-        .solution .highlight {
-            color: #ffeb3b;
-            font-weight: 700;
-        }
-
-        /* Tier cards */
-        .tier-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .tier-card {
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.7) 0%, rgba(20, 40, 70, 0.5) 100%);
-            border: 1px solid rgba(96, 130, 182, 0.4);
-            border-radius: 16px;
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tier-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-        }
-
-        .tier-c::before { background: linear-gradient(90deg, #ffd700, #ffec8b); }
-        .tier-b::before { background: linear-gradient(90deg, #c0c0c0, #e8e8e8); }
-        .tier-a::before { background: linear-gradient(90deg, #1e90ff, #4169e1); }
-        .tier-special::before { background: linear-gradient(90deg, #ff6b00, #ff4500); }
-
-        .tier-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .tier-name {
-            font-size: 18px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .tier-c .tier-name { color: #ffd700; }
-        .tier-b .tier-name { color: #c0c0c0; }
-        .tier-a .tier-name { color: #1e90ff; }
-        .tier-special .tier-name { color: #ff6b00; }
-
-        .tier-subtitle {
-            font-size: 13px;
-            color: #8fa8c4;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .tier-badge {
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .tier-c .tier-badge { background: rgba(255, 215, 0, 0.2); color: #ffd700; }
-        .tier-b .tier-badge { background: rgba(192, 192, 192, 0.2); color: #c0c0c0; }
-        .tier-a .tier-badge { background: rgba(30, 144, 255, 0.2); color: #1e90ff; }
-        .tier-special .tier-badge { background: rgba(255, 107, 0, 0.2); color: #ff6b00; }
-
-        .tier-features {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .tier-features li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            color: #c8d4e6;
-            font-size: 14px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .tier-features li:last-child {
-            border-bottom: none;
-        }
-
-        .tier-features li::before {
-            content: '✓';
-            color: #4caf50;
-            font-weight: bold;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-
-        .tier-price {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .tier-price .amount {
-            font-size: 24px;
-            font-weight: 800;
-            color: #ffffff;
-        }
-
-        .tier-price .unit {
-            font-size: 12px;
-            color: #8fa8c4;
-            text-transform: uppercase;
-        }
-
-        /* Chemical Resistance Matrix */
-        .matrix-section {
-            margin-top: 40px;
-        }
-
-        .matrix-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 20px;
-        }
-
-        .matrix-table th {
-            background: linear-gradient(135deg, #1a365d 0%, #2d4a6f 100%);
-            padding: 15px;
-            text-align: left;
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #c8d4e6;
-            border: 1px solid rgba(96, 130, 182, 0.3);
-        }
-
-        .matrix-table th:first-child {
-            border-radius: 8px 0 0 0;
-        }
-
-        .matrix-table th:last-child {
-            border-radius: 0 8px 0 0;
-        }
-
-        .matrix-table td {
-            padding: 15px;
-            border: 1px solid rgba(96, 130, 182, 0.2);
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .matrix-table td:first-child {
-            text-align: left;
-            font-weight: 600;
-            color: #c8d4e6;
-            background: rgba(26, 54, 93, 0.3);
-        }
-
-        .resistance-full {
-            color: #4caf50;
-            font-weight: 700;
-        }
-
-        .resistance-limited {
-            color: #ffeb3b;
-            font-weight: 700;
-        }
-
-        .resistance-none {
-            color: #f44336;
-            font-weight: 700;
-        }
-
-        /* Badges */
-        .badges {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.8) 0%, rgba(20, 40, 70, 0.6) 100%);
-            border: 1px solid rgba(255, 107, 0, 0.5);
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .badge-icon {
-            font-size: 18px;
-        }
-
-        /* Footer */
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, #0a1628 0%, #141e2e 100%);
-            padding: 15px 30px;
-            text-align: center;
-            border-top: 2px solid #ff6b00;
-            z-index: 100;
-        }
-
-        .footer p {
-            color: #c8d4e6;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .footer a {
-            color: #ff6b00;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* Print styles */
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        @page { size:8.5in 11in; margin:0; }
         @media print {
-            .page {
-                min-height: 100vh;
-                page-break-after: always;
-            }
+            body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+            .page { box-shadow:none !important; }
+        }
+        body { font-family:'Inter',system-ui,sans-serif; background:#060810; color:var(--text); }
+        .page {
+            width:8.5in; min-height:11in; padding:0.55in 0.6in;
+            position:relative; overflow:hidden;
+            page-break-after:always; margin:0 auto;
+        }
+        .page:last-child { page-break-after:auto; }
 
-            .footer {
-                position: fixed;
-                bottom: 0;
-            }
+        .p1-bg {
+            position:absolute; inset:0; z-index:0;
+            background:
+                radial-gradient(ellipse 70% 40% at 15% 15%, rgba(56,189,248,0.08), transparent),
+                radial-gradient(ellipse 50% 50% at 85% 85%, rgba(100,116,139,0.06), transparent),
+                linear-gradient(180deg, #0C0F1A 0%, #111827 100%);
+        }
+        .runway-lines {
+            position:absolute; inset:0; z-index:0; opacity:0.02;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(255,255,255,0.6) 80px, rgba(255,255,255,0.6) 82px);
+        }
+        .accent-bar {
+            position:absolute; top:0; left:0; right:0; height:3px; z-index:2;
+            background:linear-gradient(90deg, transparent 10%, var(--accent2), var(--accent), var(--accent2), transparent 90%);
+        }
+        .content { position:relative; z-index:1; height:100%; display:flex; flex-direction:column; }
 
-            body {
-                background: white;
-            }
+        .sales-badge {
+            display:inline-flex; align-items:center; gap:6px;
+            background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.15);
+            border-radius:20px; padding:4px 14px; font-size:0.65rem; font-weight:600;
+            color:var(--accent2); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:10px;
+        }
+        .p1-title {
+            font-family:'Space Grotesk',sans-serif; font-size:1.85rem; font-weight:700;
+            color:#fff; line-height:1.15; margin-bottom:4px;
+        }
+        .p1-title span { color:var(--accent2); }
+        .p1-subtitle { color:var(--muted); font-size:0.82rem; margin-bottom:16px; }
+
+        .section-label {
+            font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:2px;
+            color:var(--accent2); margin-bottom:8px; display:flex; align-items:center; gap:6px;
+        }
+        .section-label::after {
+            content:''; flex:1; height:1px;
+            background:linear-gradient(90deg, rgba(56,189,248,0.25), transparent);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 32px;
-            }
-
-            .header .subheadline {
-                font-size: 16px;
-            }
-
-            .tier-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .page {
-                padding: 30px 20px;
-            }
-
-            .pain-points {
-                grid-template-columns: 1fr;
-            }
+        .kyc-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+        .kyc-card {
+            background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px 12px;
         }
+        .kyc-card h4 { font-size:0.72rem; color:var(--accent2); font-weight:600; margin-bottom:3px; }
+        .kyc-card p { font-size:0.68rem; color:var(--muted); line-height:1.45; }
+
+        .pain-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+        .pain-item {
+            display:flex; gap:8px; align-items:flex-start;
+            background:rgba(239,68,68,0.04); border:1px solid rgba(239,68,68,0.08);
+            border-radius:6px; padding:8px 10px;
+        }
+        .pain-icon {
+            width:22px; height:22px; border-radius:50%; flex-shrink:0;
+            background:rgba(239,68,68,0.10); display:flex; align-items:center; justify-content:center;
+            font-size:0.55rem; color:#EF4444;
+        }
+        .pain-item p { font-size:0.67rem; color:#FDA4AF; line-height:1.35; }
+
+        .script-box {
+            background:linear-gradient(135deg, rgba(56,189,248,0.05), rgba(100,116,139,0.03));
+            border:1px solid rgba(56,189,248,0.1); border-radius:8px;
+            padding:10px 14px; margin-bottom:8px;
+        }
+        .script-tier {
+            font-size:0.6rem; font-weight:700; color:var(--accent2);
+            text-transform:uppercase; letter-spacing:1px; margin-bottom:3px;
+        }
+        .script-box blockquote {
+            font-size:0.7rem; color:#fff; font-style:italic; line-height:1.4;
+            border-left:2px solid var(--accent2); padding-left:10px;
+        }
+
+        .stats-row { display:flex; gap:10px; margin-bottom:14px; }
+        .stat-card {
+            flex:1; text-align:center; padding:10px 6px;
+            background:var(--card); border:1px solid var(--border); border-radius:8px;
+        }
+        .stat-num {
+            font-family:'Space Grotesk',sans-serif; font-size:1.3rem; font-weight:700;
+            background:linear-gradient(135deg, var(--accent2), var(--gold));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+        .stat-label { font-size:0.56rem; color:var(--muted); margin-top:2px; }
+
+        .objection-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+        .obj-item { font-size:0.64rem; line-height:1.4; }
+        .obj-q { color:#38BDF8; font-weight:600; margin-bottom:1px; }
+        .obj-a { color:var(--muted); }
+
+        .footer {
+            margin-top:auto; padding-top:10px; border-top:1px solid var(--border);
+            display:flex; justify-content:space-between; align-items:center;
+            font-size:0.65rem; color:var(--muted);
+        }
+        .footer a { color:var(--accent2); text-decoration:none; }
+
+        /* PAGE 2 */
+        .p2-bg {
+            position:absolute; inset:0; z-index:0;
+            background:
+                radial-gradient(ellipse 60% 40% at 80% 10%, rgba(56,189,248,0.08), transparent),
+                radial-gradient(ellipse 50% 50% at 20% 85%, rgba(100,116,139,0.05), transparent),
+                linear-gradient(180deg, #0C0F1A 0%, #111827 100%);
+        }
+        .p2-deco-circle {
+            position:absolute; top:-100px; right:-100px; width:350px; height:350px;
+            border-radius:50%; border:1px solid rgba(56,189,248,0.05); z-index:0;
+        }
+
+        .p2-hero { text-align:center; margin-bottom:16px; }
+        .p2-badge {
+            display:inline-flex; align-items:center; gap:5px;
+            background:rgba(56,189,248,0.06); border:1px solid rgba(56,189,248,0.12);
+            border-radius:20px; padding:3px 12px; font-size:0.58rem; font-weight:600;
+            color:var(--accent2); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:8px;
+        }
+        .p2-hero h1 {
+            font-family:'Space Grotesk',sans-serif; font-size:2.1rem; font-weight:700;
+            color:#fff; line-height:1.1; margin-bottom:6px;
+        }
+        .p2-hero h1 span {
+            background:linear-gradient(135deg, var(--accent2), var(--gold));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+        .p2-hero p { color:var(--muted); font-size:0.78rem; max-width:500px; margin:0 auto; }
+
+        .tiers { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
+        .tier {
+            background:var(--card); border:1px solid var(--border); border-radius:10px;
+            padding:14px; position:relative; overflow:hidden;
+        }
+        .tier-bar { position:absolute; top:0; left:0; right:0; height:3px; }
+        .t1 .tier-bar { background:var(--muted); }
+        .t2 .tier-bar { background:var(--accent2); }
+        .t3 .tier-bar { background:linear-gradient(90deg, var(--accent2), var(--gold)); }
+        .ts .tier-bar { background:linear-gradient(90deg, #A855F7, var(--accent2), #A855F7); height:4px; }
+        .tier-head { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+        .tier-icon {
+            width:30px; height:30px; border-radius:8px; display:flex;
+            align-items:center; justify-content:center; font-size:0.75rem; font-weight:700;
+        }
+        .t1 .tier-icon { background:rgba(100,116,139,0.15); color:var(--muted); }
+        .t2 .tier-icon { background:rgba(56,189,248,0.12); color:var(--accent2); }
+        .t3 .tier-icon { background:rgba(212,165,32,0.12); color:var(--gold); }
+        .ts .tier-icon { background:rgba(168,85,247,0.10); color:#A855F7; }
+        .tier-name { font-size:0.85rem; font-weight:700; color:#fff; }
+        .tier-tag { font-size:0.55rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+        .tier ul { list-style:none; margin:6px 0; }
+        .tier li {
+            font-size:0.67rem; color:var(--text); padding:2.5px 0 2.5px 14px;
+            position:relative; line-height:1.4;
+        }
+        .tier li::before {
+            content:''; position:absolute; left:0; top:8px; width:5px; height:5px; border-radius:50%;
+        }
+        .t1 li::before { background:var(--muted); }
+        .t2 li::before { background:var(--accent2); }
+        .t3 li::before { background:var(--gold); }
+        .ts li::before { background:#A855F7; }
+        .tier-price {
+            margin-top:8px; padding-top:8px; border-top:1px solid var(--border);
+            font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:700; color:#fff;
+        }
+        .tier-price span { font-size:0.65rem; font-weight:400; color:var(--muted); }
+
+        .compare {
+            background:rgba(56,189,248,0.03); border:1px solid rgba(56,189,248,0.08);
+            border-radius:8px; padding:10px 12px; margin-bottom:12px;
+        }
+        .compare h3 {
+            font-size:0.75rem; font-weight:700; color:var(--accent2);
+            text-align:center; margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;
+        }
+        .compare table { width:100%; border-collapse:collapse; font-size:0.65rem; }
+        .compare th {
+            text-align:left; padding:5px 6px; color:var(--accent2);
+            border-bottom:1px solid rgba(56,189,248,0.1); font-size:0.58rem;
+            text-transform:uppercase; letter-spacing:0.5px;
+        }
+        .compare td { padding:4px 6px; color:var(--text); border-bottom:1px solid var(--border); }
+        .compare td:first-child { font-weight:600; color:var(--accent2); }
+
+        .cta {
+            background:linear-gradient(135deg, rgba(56,189,248,0.06), rgba(100,116,139,0.04));
+            border:1px solid rgba(56,189,248,0.12); border-radius:10px;
+            padding:14px 20px; text-align:center;
+        }
+        .cta h3 {
+            font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:700;
+            color:#fff; margin-bottom:4px;
+        }
+        .cta p { font-size:0.72rem; color:var(--muted); margin-bottom:8px; }
+        .cta-contacts {
+            display:flex; justify-content:center; gap:24px; font-size:0.72rem; color:var(--text);
+        }
+        .cta-contacts i { color:var(--accent2); margin-right:4px; }
+        .cta-contacts a { color:var(--gold); text-decoration:none; }
     </style>
 </head>
 <body>
-    <!-- PAGE 1: Problem + Solution -->
-    <div class="page">
-        <div class="aircraft-silhouette"></div>
-        <div class="container">
-            <div class="header">
-                <h1>Aircraft-Grade Flooring for Aircraft-Grade Operations</h1>
-                <p class="subheadline">The only floor rated for jets, Skydrol, and 50,000 lb landing gear</p>
-            </div>
 
-            <div class="section">
-                <h2 class="section-title">
-                    <span class="icon">⚠️</span>
-                    Why Standard Floors Fail in Aviation
-                </h2>
-                <div class="pain-points">
-                    <div class="pain-point">
-                        <span class="icon">💧</span>
-                        <div class="text">
-                            <h4>Skydrol Destruction</h4>
-                            <p>Hydraulic fluid eats through standard epoxy in months</p>
-                        </div>
-                    </div>
-                    <div class="pain-point">
-                        <span class="icon">🛢️</span>
-                        <div class="text">
-                            <h4>Fuel Penetration</h4>
-                            <p>Jet-A spills stain and damage unprotected floors</p>
-                        </div>
-                    </div>
-                    <div class="pain-point">
-                        <span class="icon">✈️</span>
-                        <div class="text">
-                            <h4>Weight Cracking</h4>
-                            <p>50,000+ lb landing gear shatters inferior coatings</p>
-                        </div>
-                    </div>
-                    <div class="pain-point">
-                        <span class="icon">☀️</span>
-                        <div class="text">
-                            <h4>UV Degradation</h4>
-                            <p>Open hangar doors expose floors to damaging sunlight</p>
-                        </div>
-                    </div>
-                    <div class="pain-point">
-                        <span class="icon">🔧</span>
-                        <div class="text">
-                            <h4>FOD Hazards</h4>
-                            <p>Flaking coatings create dangerous debris fields</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- PAGE 1: JOSUE'S SALES GUIDE -->
+<div class="page">
+    <div class="p1-bg"></div>
+    <div class="runway-lines"></div>
+    <div class="accent-bar"></div>
+    <div class="content">
 
-            <div class="section solution">
-                <span class="icon" style="width: 80px; height: 80px; font-size: 40px; margin-bottom: 20px;">🛡️</span>
-                <h2>The Solution</h2>
-                <p><span class="highlight">Aerospace-spec Novolac + Polyaspartic</span> systems engineered specifically for aviation operations</p>
+        <div class="sales-badge"><i class="fas fa-lock"></i> Internal Sales Guide — Do Not Share</div>
+        <div class="p1-title">Selling <span>Airport Hangar</span> Floors</div>
+        <div class="p1-subtitle">GA hangars, FBO facilities, MRO bays, corporate aviation — the premium tier of flooring</div>
+
+        <div class="section-label"><i class="fas fa-crosshairs"></i> Know Your Customer</div>
+        <div class="kyc-grid">
+            <div class="kyc-card">
+                <h4><i class="fas fa-plane"></i> Who's Buying</h4>
+                <p>Airport managers, FBO operators, corporate flight departments, MRO facility managers. High-net-worth decision makers. They expect aerospace-grade solutions. No cutting corners.</p>
+            </div>
+            <div class="kyc-card">
+                <h4><i class="fas fa-dollar-sign"></i> Budget Range</h4>
+                <p>$3–$8/sq ft installed. Hangars are 5,000–50,000+ sq ft. Total jobs: $25K–$300K+. These clients have money — sell quality, not price. Lead with Tier 3.</p>
             </div>
         </div>
-    </div>
 
-    <!-- PAGE 2: Tier Breakdown -->
-    <div class="page">
-        <div class="aircraft-silhouette"></div>
-        <div class="container">
-            <div class="header">
-                <h1>Select Your Tier</h1>
-                <p class="subheadline">Engineered solutions for every aviation application</p>
+        <div class="section-label"><i class="fas fa-exclamation-triangle"></i> The Problems They Have</div>
+        <div class="pain-grid">
+            <div class="pain-item">
+                <div class="pain-icon"><i class="fas fa-skull-crossbones"></i></div>
+                <p><strong>Skydrol destroys everything.</strong> Phosphate-ester hydraulic fluid melts standard epoxy in hours. Only Novolac survives it.</p>
             </div>
-
-            <div class="tier-grid">
-                <!-- Tier C -->
-                <div class="tier-card tier-c">
-                    <div class="tier-header">
-                        <div>
-                            <div class="tier-name">Tier C - Economy</div>
-                            <div class="tier-subtitle">Light Aviation</div>
-                        </div>
-                        <span class="tier-badge">Entry Level</span>
-                    </div>
-                    <ul class="tier-features">
-                        <li>Standard Bisphenol A epoxy</li>
-                        <li>Suitable for small aircraft only</li>
-                        <li>Basic chemical resistance</li>
-                        <li>5-year lifespan</li>
-                        <li>Private pilots, glider clubs, storage</li>
-                    </ul>
-                    <div class="tier-price">
-                        <div class="amount">$5-7</div>
-                        <div class="unit">per sq ft installed</div>
-                    </div>
-                </div>
-
-                <!-- Tier B -->
-                <div class="tier-card tier-b">
-                    <div class="tier-header">
-                        <div>
-                            <div class="tier-name">Tier B - Professional</div>
-                            <div class="tier-subtitle">Standard Hangar</div>
-                        </div>
-                        <span class="tier-badge">Most Popular</span>
-                    </div>
-                    <ul class="tier-features">
-                        <li>Novolac-enhanced epoxy</li>
-                        <li>Skydrol resistant (limited exposure)</li>
-                        <li>Jet fuel resistant</li>
-                        <li>7-10 year lifespan</li>
-                        <li>FBOs, flight schools, charter ops</li>
-                    </ul>
-                    <div class="tier-price">
-                        <div class="amount">$8-12</div>
-                        <div class="unit">per sq ft installed</div>
-                    </div>
-                </div>
-
-                <!-- Tier A -->
-                <div class="tier-card tier-a">
-                    <div class="tier-header">
-                        <div>
-                            <div class="tier-name">Tier A - Premium</div>
-                            <div class="tier-subtitle">Commercial Aviation</div>
-                        </div>
-                        <span class="tier-badge">Enterprise</span>
-                    </div>
-                    <ul class="tier-features">
-                        <li>Full Novolac system</li>
-                        <li>Unlimited Skydrol resistance</li>
-                        <li>Polyaspartic UV-stable topcoat</li>
-                        <li>Heavy impact resistance</li>
-                        <li>10-15 year lifespan</li>
-                        <li>Commercial MRO, airlines, corporate jets</li>
-                    </ul>
-                    <div class="tier-price">
-                        <div class="amount">$13-18</div>
-                        <div class="unit">per sq ft installed</div>
-                    </div>
-                </div>
-
-                <!-- Special Tier -->
-                <div class="tier-card tier-special">
-                    <div class="tier-header">
-                        <div>
-                            <div class="tier-name">Special Tier</div>
-                            <div class="tier-subtitle">Military / Government Spec</div>
-                        </div>
-                        <span class="tier-badge">Classified</span>
-                    </div>
-                    <ul class="tier-features">
-                        <li>Full military-spec system</li>
-                        <li>Meets UFC and USACE standards</li>
-                        <li>Chemical warfare agent resistant</li>
-                        <li>ESD/EMI shielding available</li>
-                        <li>20+ year warranty</li>
-                        <li>Military bases, NASA, contractors</li>
-                    </ul>
-                    <div class="tier-price">
-                        <div class="amount">$20-28</div>
-                        <div class="unit">per sq ft installed</div>
-                    </div>
-                </div>
+            <div class="pain-item">
+                <div class="pain-icon"><i class="fas fa-gas-pump"></i></div>
+                <p><strong>Jet fuel / Avgas spills.</strong> JP-4, JP-8, 100LL — standard coatings absorb fuel and become slip hazards and fire risks.</p>
             </div>
-
-            <!-- Chemical Resistance Matrix -->
-            <div class="section matrix-section">
-                <h2 class="section-title">
-                    <span class="icon">🧪</span>
-                    Chemical Resistance Matrix
-                </h2>
-                <table class="matrix-table">
-                    <thead>
-                        <tr>
-                            <th>Chemical</th>
-                            <th>Tier C</th>
-                            <th>Tier B</th>
-                            <th>Tier A</th>
-                            <th>Special</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Skydrol Hydraulic Fluid</td>
-                            <td class="resistance-none">❌ None</td>
-                            <td class="resistance-limited">⚠️ Limited</td>
-                            <td class="resistance-full">✅ Full</td>
-                            <td class="resistance-full">✅ Full</td>
-                        </tr>
-                        <tr>
-                            <td>Jet-A Fuel</td>
-                            <td class="resistance-limited">⚠️ Limited</td>
-                            <td class="resistance-full">✅ Full</td>
-                            <td class="resistance-full">✅ Full</td>
-                            <td class="resistance-full">✅ Full</td>
-                        </tr>
-                        <tr>
-                            <td>De-Icing Fluids</td>
-                            <td class="resistance-limited">⚠️ Limited</td>
-                            <td class="resistance-full">✅ Full</td>
-                            <td class="resistance-full">✅ Full</td>
-                            <td class="resistance-full">✅ Full</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="badges">
-                    <div class="badge">
-                        <span class="badge-icon">🇺🇸</span>
-                        UFC Compliant
-                    </div>
-                    <div class="badge">
-                        <span class="badge-icon">🏛️</span>
-                        USACE Approved
-                    </div>
-                    <div class="badge">
-                        <span class="badge-icon">🛡️</span>
-                        Mil-Spec
-                    </div>
-                    <div class="badge">
-                        <span class="badge-icon">✈️</span>
-                        FAA Recognized
-                    </div>
-                </div>
+            <div class="pain-item">
+                <div class="pain-icon"><i class="fas fa-triangle-exclamation"></i></div>
+                <p><strong>FOD risk.</strong> Peeling or chipping coatings create Foreign Object Debris — can destroy a jet engine. Seamless coatings eliminate this.</p>
+            </div>
+            <div class="pain-item">
+                <div class="pain-icon"><i class="fas fa-weight-hanging"></i></div>
+                <p><strong>Extreme wheel loads.</strong> Aircraft wheel loads of 10,000–50,000+ lbs concentrated on small tire contact patches. Standard floors crack.</p>
             </div>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>KMJK Group | Professional Epoxy Solutions | <a href="https://kmjk.pro">kmjk.pro</a> | 772-323-3776</p>
+        <div class="section-label"><i class="fas fa-comments-dollar"></i> How to Sell Each Tier</div>
+        <div class="script-box">
+            <div class="script-tier">Tier 1 — Economy (GA / Light Use)</div>
+            <blockquote>"Basic seal coat for small GA hangars storing Cessnas and Pipers. Keeps the dust down, makes cleanup easier. But if you're dealing with any hydraulic fluid, you need Tier 2 minimum."</blockquote>
+        </div>
+        <div class="script-box">
+            <div class="script-tier">Tier 2 — Professional (FBO Standard)</div>
+            <blockquote>"This is what most FBOs use. UV-protected so it won't yellow from hangar door sunlight. Chemical-resistant basecoat with a quartz broadcast for anti-slip. Handles Avgas and light hydraulic exposure."</blockquote>
+        </div>
+        <div class="script-box">
+            <div class="script-tier">Tier 3 — Aerospace Grade ★ Lead With This</div>
+            <blockquote>"Three-layer system: Phenalkamine moisture barrier, Novolac body coat that laughs at Skydrol and JP-8, and a Polyaspartic topcoat for UV armor and 4-hour return to service. This is MIL-SPEC performance. The floor outlasts the hangar."</blockquote>
+        </div>
+
+        <div class="section-label"><i class="fas fa-chart-line"></i> Numbers That Close Deals</div>
+        <div class="stats-row">
+            <div class="stat-card"><div class="stat-num">20+</div><div class="stat-label">Year<br>Lifespan</div></div>
+            <div class="stat-card"><div class="stat-num">500°F</div><div class="stat-label">Heat &amp; Chemical<br>Resistance</div></div>
+            <div class="stat-card"><div class="stat-num">0</div><div class="stat-label">FOD Risk<br>(Seamless)</div></div>
+            <div class="stat-card"><div class="stat-num">4 hrs</div><div class="stat-label">Aircraft<br>Roll-On</div></div>
+        </div>
+
+        <div class="section-label"><i class="fas fa-shield-halved"></i> Objection Handlers</div>
+        <div class="objection-grid">
+            <div class="obj-item">
+                <div class="obj-q">"Our bare concrete has been fine for years."</div>
+                <div class="obj-a">→ "Until a Skydrol drip eats a 2-foot crater and a technician slips in it. One workers' comp claim costs more than the entire floor coating."</div>
+            </div>
+            <div class="obj-item">
+                <div class="obj-q">"Can't take the hangar offline."</div>
+                <div class="obj-a">→ "Phased install — half at a time. Polyaspartic topcoat = 4hr cure. Aircraft rolls back in same shift."</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>KMJK Group — Internal Sales Guide</div>
+            <div><a href="https://kmjk.pro">kmjk.pro</a> &nbsp;|&nbsp; 772-323-3776</div>
+        </div>
     </div>
+</div>
+
+<!-- PAGE 2: CLIENT FLYER -->
+<div class="page">
+    <div class="p2-bg"></div>
+    <div class="p2-deco-circle"></div>
+    <div class="content">
+
+        <div class="p2-hero">
+            <div class="p2-badge"><i class="fas fa-plane"></i> Aviation &amp; Hangar Flooring</div>
+            <h1>Aerospace-Grade<br><span>From the Ground Up</span></h1>
+            <p>Skydrol-resistant, fuel-proof, FOD-free flooring systems engineered for the world's most demanding environments. Protect your aircraft. Protect your people.</p>
+        </div>
+
+        <div class="tiers">
+            <div class="tier t1">
+                <div class="tier-bar"></div>
+                <div class="tier-head">
+                    <div class="tier-icon">1</div>
+                    <div><div class="tier-name">GA Standard</div><div class="tier-tag">Light Aviation</div></div>
+                </div>
+                <ul>
+                    <li>Epoxy seal coat — dust elimination</li>
+                    <li>Light chemical resistance</li>
+                    <li>Solid or safety-line colors</li>
+                    <li>5–8 year lifespan</li>
+                    <li>Best for: private GA hangars</li>
+                </ul>
+                <div class="tier-price">$2–3 <span>/sq ft installed</span></div>
+            </div>
+
+            <div class="tier t2">
+                <div class="tier-bar"></div>
+                <div class="tier-head">
+                    <div class="tier-icon">2</div>
+                    <div><div class="tier-name">FBO Grade</div><div class="tier-tag">UV + Chemical Resistant</div></div>
+                </div>
+                <ul>
+                    <li>UV-stabilized (HALS + UVA package)</li>
+                    <li>Quartz broadcast for anti-slip</li>
+                    <li>Avgas / light hydraulic resistant</li>
+                    <li>Safety lane demarcation included</li>
+                    <li>10–12 year lifespan</li>
+                </ul>
+                <div class="tier-price">$4–6 <span>/sq ft installed</span></div>
+            </div>
+
+            <div class="tier t3">
+                <div class="tier-bar"></div>
+                <div class="tier-head">
+                    <div class="tier-icon">3</div>
+                    <div><div class="tier-name">MRO / Aerospace</div><div class="tier-tag">3-Layer Novolac System</div></div>
+                </div>
+                <ul>
+                    <li>Layer 1: Phenalkamine moisture barrier</li>
+                    <li>Layer 2: Novolac — Skydrol &amp; JP-8 proof</li>
+                    <li>Layer 3: Polyaspartic UV armor topcoat</li>
+                    <li>350–500°F thermal resistance</li>
+                    <li>20+ year warranty • FOD-free</li>
+                </ul>
+                <div class="tier-price">$6–8 <span>/sq ft installed</span></div>
+            </div>
+
+            <div class="tier ts">
+                <div class="tier-bar"></div>
+                <div class="tier-head">
+                    <div class="tier-icon"><i class="fas fa-star"></i></div>
+                    <div><div class="tier-name">Mission Critical</div><div class="tier-tag">Full Custom Spec</div></div>
+                </div>
+                <ul>
+                    <li>ESD (electrostatic dissipative) option</li>
+                    <li>Conductive grounding for fuel zones</li>
+                    <li>Custom color / corporate branding</li>
+                    <li>MIL-PRF specification compliance</li>
+                    <li>Engineered to your exact requirements</li>
+                </ul>
+                <div class="tier-price">Custom <span>quote</span></div>
+            </div>
+        </div>
+
+        <div class="compare">
+            <h3><i class="fas fa-table"></i> Chemical Resistance Matrix</h3>
+            <table>
+                <tr><th>Chemical</th><th>GA Standard</th><th>FBO Grade</th><th>Aerospace</th></tr>
+                <tr><td>Avgas (100LL)</td><td>Short exposure</td><td>Resistant</td><td>Fully proof</td></tr>
+                <tr><td>Jet Fuel (JP-8)</td><td>No</td><td>Moderate</td><td>Fully proof</td></tr>
+                <tr><td>Skydrol (Hyd.)</td><td>No</td><td>No</td><td>Fully proof</td></tr>
+                <tr><td>De-icing Fluid</td><td>Moderate</td><td>Resistant</td><td>Fully proof</td></tr>
+                <tr><td>MEK / Acetone</td><td>No</td><td>Short exposure</td><td>Resistant</td></tr>
+            </table>
+        </div>
+
+        <div class="cta">
+            <h3>Hangar Assessment &amp; Specification — Complimentary</h3>
+            <p>We evaluate your chemical exposure profile, traffic loads, and compliance requirements. Full engineering spec within 5 business days.</p>
+            <div class="cta-contacts">
+                <div><i class="fas fa-phone"></i> <strong>772-323-3776</strong></div>
+                <div><i class="fas fa-envelope"></i> <a href="mailto:info@kmjk.pro">info@kmjk.pro</a></div>
+                <div><i class="fas fa-globe"></i> <a href="https://kmjk.pro">kmjk.pro</a></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>© 2026 KMJK Group — Jensen Beach, FL</div>
+            <div><a href="https://kmjk.pro">Professional Epoxy Solutions</a></div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
