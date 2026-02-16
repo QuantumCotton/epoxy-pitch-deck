@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aircraft Hangar Flooring - KMJK Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0f1a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 100%;
+            min-height: 100vh;
+            padding: 60px 50px;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        /* Background with runway markings */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(135deg, rgba(10, 25, 47, 0.95) 0%, rgba(15, 35, 60, 0.92) 100%),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 400px,
+                    rgba(255, 255, 255, 0.03) 400px,
+                    rgba(255, 255, 255, 0.03) 420px
+                );
+            z-index: -2;
+        }
+
+        /* Aircraft silhouette */
+        .aircraft-silhouette {
+            position: absolute;
+            bottom: 100px;
+            right: -100px;
+            width: 600px;
+            height: 300px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 200" fill="rgba(255,255,255,0.02)"><path d="M480 100l-120-20-80-60-160 40 40 60-80 20 20 40 120-20 60 40-100 20 20 60 240-40 60-20z"/></svg>') no-repeat center center;
+            background-size: contain;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 50%, #ff6b00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .header .subheadline {
+            font-size: 22px;
+            color: #b8c5d6;
+            font-weight: 500;
+        }
+
+        /* Icons */
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a365d 0%, #2d4a6f 100%);
+            border-radius: 12px;
+            margin-right: 12px;
+            font-size: 24px;
+        }
+
+        /* Section styling */
+        .section {
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.6) 0%, rgba(20, 40, 70, 0.4) 100%);
+            border: 1px solid rgba(96, 130, 182, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff6b00;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Pain points */
+        .pain-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .pain-point {
+            background: rgba(139, 0, 0, 0.15);
+            border-left: 4px solid #ff4444;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .pain-point .icon {
+            background: linear-gradient(135deg, #8b0000 0%, #b22222 100%);
+            flex-shrink: 0;
+        }
+
+        .pain-point .text {
+            flex: 1;
+        }
+
+        .pain-point .text h4 {
+            color: #ff6b6b;
+            font-size: 16px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .pain-point .text p {
+            color: #c8d4e6;
+            font-size: 14px;
+        }
+
+        /* Solution */
+        .solution {
+            background: linear-gradient(135deg, rgba(34, 139, 34, 0.2) 0%, rgba(0, 100, 0, 0.15) 100%);
+            border: 2px solid rgba(76, 175, 80, 0.5);
+            text-align: center;
+            padding: 50px 40px;
+        }
+
+        .solution h2 {
+            font-size: 32px;
+            color: #4caf50;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .solution p {
+            font-size: 20px;
+            color: #a8d5a2;
+            font-weight: 500;
+        }
+
+        .solution .highlight {
+            color: #ffeb3b;
+            font-weight: 700;
+        }
+
+        /* Tier cards */
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .tier-card {
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.7) 0%, rgba(20, 40, 70, 0.5) 100%);
+            border: 1px solid rgba(96, 130, 182, 0.4);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .tier-c::before { background: linear-gradient(90deg, #ffd700, #ffec8b); }
+        .tier-b::before { background: linear-gradient(90deg, #c0c0c0, #e8e8e8); }
+        .tier-a::before { background: linear-gradient(90deg, #1e90ff, #4169e1); }
+        .tier-special::before { background: linear-gradient(90deg, #ff6b00, #ff4500); }
+
+        .tier-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tier-name {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tier-c .tier-name { color: #ffd700; }
+        .tier-b .tier-name { color: #c0c0c0; }
+        .tier-a .tier-name { color: #1e90ff; }
+        .tier-special .tier-name { color: #ff6b00; }
+
+        .tier-subtitle {
+            font-size: 13px;
+            color: #8fa8c4;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .tier-c .tier-badge { background: rgba(255, 215, 0, 0.2); color: #ffd700; }
+        .tier-b .tier-badge { background: rgba(192, 192, 192, 0.2); color: #c0c0c0; }
+        .tier-a .tier-badge { background: rgba(30, 144, 255, 0.2); color: #1e90ff; }
+        .tier-special .tier-badge { background: rgba(255, 107, 0, 0.2); color: #ff6b00; }
+
+        .tier-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .tier-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #c8d4e6;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .tier-features li:last-child {
+            border-bottom: none;
+        }
+
+        .tier-features li::before {
+            content: '✓';
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .tier-price {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .tier-price .amount {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .tier-price .unit {
+            font-size: 12px;
+            color: #8fa8c4;
+            text-transform: uppercase;
+        }
+
+        /* Chemical Resistance Matrix */
+        .matrix-section {
+            margin-top: 40px;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+        }
+
+        .matrix-table th {
+            background: linear-gradient(135deg, #1a365d 0%, #2d4a6f 100%);
+            padding: 15px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #c8d4e6;
+            border: 1px solid rgba(96, 130, 182, 0.3);
+        }
+
+        .matrix-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .matrix-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .matrix-table td {
+            padding: 15px;
+            border: 1px solid rgba(96, 130, 182, 0.2);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .matrix-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: #c8d4e6;
+            background: rgba(26, 54, 93, 0.3);
+        }
+
+        .resistance-full {
+            color: #4caf50;
+            font-weight: 700;
+        }
+
+        .resistance-limited {
+            color: #ffeb3b;
+            font-weight: 700;
+        }
+
+        .resistance-none {
+            color: #f44336;
+            font-weight: 700;
+        }
+
+        /* Badges */
+        .badges {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.8) 0%, rgba(20, 40, 70, 0.6) 100%);
+            border: 1px solid rgba(255, 107, 0, 0.5);
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-icon {
+            font-size: 18px;
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #0a1628 0%, #141e2e 100%);
+            padding: 15px 30px;
+            text-align: center;
+            border-top: 2px solid #ff6b00;
+            z-index: 100;
+        }
+
+        .footer p {
+            color: #c8d4e6;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .footer a {
+            color: #ff6b00;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Print styles */
+        @media print {
+            .page {
+                min-height: 100vh;
+                page-break-after: always;
+            }
+
+            .footer {
+                position: fixed;
+                bottom: 0;
+            }
+
+            body {
+                background: white;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .header .subheadline {
+                font-size: 16px;
+            }
+
+            .tier-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page {
+                padding: 30px 20px;
+            }
+
+            .pain-points {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1: Problem + Solution -->
+    <div class="page">
+        <div class="aircraft-silhouette"></div>
+        <div class="container">
+            <div class="header">
+                <h1>Aircraft-Grade Flooring for Aircraft-Grade Operations</h1>
+                <p class="subheadline">The only floor rated for jets, Skydrol, and 50,000 lb landing gear</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">⚠️</span>
+                    Why Standard Floors Fail in Aviation
+                </h2>
+                <div class="pain-points">
+                    <div class="pain-point">
+                        <span class="icon">💧</span>
+                        <div class="text">
+                            <h4>Skydrol Destruction</h4>
+                            <p>Hydraulic fluid eats through standard epoxy in months</p>
+                        </div>
+                    </div>
+                    <div class="pain-point">
+                        <span class="icon">🛢️</span>
+                        <div class="text">
+                            <h4>Fuel Penetration</h4>
+                            <p>Jet-A spills stain and damage unprotected floors</p>
+                        </div>
+                    </div>
+                    <div class="pain-point">
+                        <span class="icon">✈️</span>
+                        <div class="text">
+                            <h4>Weight Cracking</h4>
+                            <p>50,000+ lb landing gear shatters inferior coatings</p>
+                        </div>
+                    </div>
+                    <div class="pain-point">
+                        <span class="icon">☀️</span>
+                        <div class="text">
+                            <h4>UV Degradation</h4>
+                            <p>Open hangar doors expose floors to damaging sunlight</p>
+                        </div>
+                    </div>
+                    <div class="pain-point">
+                        <span class="icon">🔧</span>
+                        <div class="text">
+                            <h4>FOD Hazards</h4>
+                            <p>Flaking coatings create dangerous debris fields</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section solution">
+                <span class="icon" style="width: 80px; height: 80px; font-size: 40px; margin-bottom: 20px;">🛡️</span>
+                <h2>The Solution</h2>
+                <p><span class="highlight">Aerospace-spec Novolac + Polyaspartic</span> systems engineered specifically for aviation operations</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: Tier Breakdown -->
+    <div class="page">
+        <div class="aircraft-silhouette"></div>
+        <div class="container">
+            <div class="header">
+                <h1>Select Your Tier</h1>
+                <p class="subheadline">Engineered solutions for every aviation application</p>
+            </div>
+
+            <div class="tier-grid">
+                <!-- Tier C -->
+                <div class="tier-card tier-c">
+                    <div class="tier-header">
+                        <div>
+                            <div class="tier-name">Tier C - Economy</div>
+                            <div class="tier-subtitle">Light Aviation</div>
+                        </div>
+                        <span class="tier-badge">Entry Level</span>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Standard Bisphenol A epoxy</li>
+                        <li>Suitable for small aircraft only</li>
+                        <li>Basic chemical resistance</li>
+                        <li>5-year lifespan</li>
+                        <li>Private pilots, glider clubs, storage</li>
+                    </ul>
+                    <div class="tier-price">
+                        <div class="amount">$5-7</div>
+                        <div class="unit">per sq ft installed</div>
+                    </div>
+                </div>
+
+                <!-- Tier B -->
+                <div class="tier-card tier-b">
+                    <div class="tier-header">
+                        <div>
+                            <div class="tier-name">Tier B - Professional</div>
+                            <div class="tier-subtitle">Standard Hangar</div>
+                        </div>
+                        <span class="tier-badge">Most Popular</span>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Novolac-enhanced epoxy</li>
+                        <li>Skydrol resistant (limited exposure)</li>
+                        <li>Jet fuel resistant</li>
+                        <li>7-10 year lifespan</li>
+                        <li>FBOs, flight schools, charter ops</li>
+                    </ul>
+                    <div class="tier-price">
+                        <div class="amount">$8-12</div>
+                        <div class="unit">per sq ft installed</div>
+                    </div>
+                </div>
+
+                <!-- Tier A -->
+                <div class="tier-card tier-a">
+                    <div class="tier-header">
+                        <div>
+                            <div class="tier-name">Tier A - Premium</div>
+                            <div class="tier-subtitle">Commercial Aviation</div>
+                        </div>
+                        <span class="tier-badge">Enterprise</span>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Full Novolac system</li>
+                        <li>Unlimited Skydrol resistance</li>
+                        <li>Polyaspartic UV-stable topcoat</li>
+                        <li>Heavy impact resistance</li>
+                        <li>10-15 year lifespan</li>
+                        <li>Commercial MRO, airlines, corporate jets</li>
+                    </ul>
+                    <div class="tier-price">
+                        <div class="amount">$13-18</div>
+                        <div class="unit">per sq ft installed</div>
+                    </div>
+                </div>
+
+                <!-- Special Tier -->
+                <div class="tier-card tier-special">
+                    <div class="tier-header">
+                        <div>
+                            <div class="tier-name">Special Tier</div>
+                            <div class="tier-subtitle">Military / Government Spec</div>
+                        </div>
+                        <span class="tier-badge">Classified</span>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Full military-spec system</li>
+                        <li>Meets UFC and USACE standards</li>
+                        <li>Chemical warfare agent resistant</li>
+                        <li>ESD/EMI shielding available</li>
+                        <li>20+ year warranty</li>
+                        <li>Military bases, NASA, contractors</li>
+                    </ul>
+                    <div class="tier-price">
+                        <div class="amount">$20-28</div>
+                        <div class="unit">per sq ft installed</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chemical Resistance Matrix -->
+            <div class="section matrix-section">
+                <h2 class="section-title">
+                    <span class="icon">🧪</span>
+                    Chemical Resistance Matrix
+                </h2>
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th>Chemical</th>
+                            <th>Tier C</th>
+                            <th>Tier B</th>
+                            <th>Tier A</th>
+                            <th>Special</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Skydrol Hydraulic Fluid</td>
+                            <td class="resistance-none">❌ None</td>
+                            <td class="resistance-limited">⚠️ Limited</td>
+                            <td class="resistance-full">✅ Full</td>
+                            <td class="resistance-full">✅ Full</td>
+                        </tr>
+                        <tr>
+                            <td>Jet-A Fuel</td>
+                            <td class="resistance-limited">⚠️ Limited</td>
+                            <td class="resistance-full">✅ Full</td>
+                            <td class="resistance-full">✅ Full</td>
+                            <td class="resistance-full">✅ Full</td>
+                        </tr>
+                        <tr>
+                            <td>De-Icing Fluids</td>
+                            <td class="resistance-limited">⚠️ Limited</td>
+                            <td class="resistance-full">✅ Full</td>
+                            <td class="resistance-full">✅ Full</td>
+                            <td class="resistance-full">✅ Full</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="badges">
+                    <div class="badge">
+                        <span class="badge-icon">🇺🇸</span>
+                        UFC Compliant
+                    </div>
+                    <div class="badge">
+                        <span class="badge-icon">🏛️</span>
+                        USACE Approved
+                    </div>
+                    <div class="badge">
+                        <span class="badge-icon">🛡️</span>
+                        Mil-Spec
+                    </div>
+                    <div class="badge">
+                        <span class="badge-icon">✈️</span>
+                        FAA Recognized
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>KMJK Group | Professional Epoxy Solutions | <a href="https://kmjk.pro">kmjk.pro</a> | 772-323-3776</p>
+    </div>
+</body>
+</html>

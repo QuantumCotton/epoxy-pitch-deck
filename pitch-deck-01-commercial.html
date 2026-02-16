@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial High-Traffic Flooring | KMJK Group</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: 8.5in 11in;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 8.5in;
+            height: 11in;
+            min-height: 11in;
+            padding: 0.75in;
+            position: relative;
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%);
+            overflow: hidden;
+            page-break-after: always;
+            margin: 0 auto;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        /* Circuit board background pattern */
+        .circuit-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.05;
+            background-image: 
+                linear-gradient(90deg, #d4a520 1px, transparent 1px),
+                linear-gradient(#d4a520 1px, transparent 1px),
+                radial-gradient(circle at 25% 25%, #d4a520 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, #d4a520 2px, transparent 2px);
+            background-size: 50px 50px, 50px 50px, 20px 20px, 20px 20px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Page 1 Styles */
+        .hero-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #d4a520;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .pain-points {
+            background: rgba(212, 165, 32, 0.08);
+            border: 1px solid rgba(212, 165, 32, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            max-width: 600px;
+        }
+
+        .pain-points h3 {
+            color: #d4a520;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pain-points ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .pain-points li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #c0c0c0;
+        }
+
+        .pain-points li::before {
+            content: '\f071';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #d4a520;
+        }
+
+        .solution-box {
+            background: linear-gradient(135deg, rgba(212, 165, 32, 0.15), rgba(212, 165, 32, 0.05));
+            border-left: 4px solid #d4a520;
+            padding: 1.5rem 2rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
+            max-width: 550px;
+        }
+
+        .solution-box h3 {
+            color: #d4a520;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .solution-box p {
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Page 2 Styles */
+        .tier-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .tier-header h2 {
+            font-size: 2rem;
+            color: #d4a520;
+            margin-bottom: 0.3rem;
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            flex: 1;
+        }
+
+        .tier-card {
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(212, 165, 32, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #d4a520;
+        }
+
+        .tier-card.premium::before {
+            background: linear-gradient(90deg, #d4a520, #f4d03f);
+        }
+
+        .tier-card.special::before {
+            background: linear-gradient(90deg, #d4a520, #00d4ff, #d4a520);
+            height: 6px;
+        }
+
+        .tier-header-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tier-badge {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4a520, #b8931a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #0a0a0a;
+        }
+
+        .tier-card.special .tier-badge {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+        }
+
+        .tier-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #d4a520;
+            text-transform: uppercase;
+        }
+
+        .tier-subtitle {
+            font-size: 0.8rem;
+            color: #808080;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: -0.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tier-features {
+            font-size: 0.85rem;
+            color: #b0b0b0;
+        }
+
+        .tier-features li {
+            padding: 0.25rem 0;
+            padding-left: 1.3rem;
+            position: relative;
+        }
+
+        .tier-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #d4a520;
+        }
+
+        .tier-price {
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(212, 165, 32, 0.2);
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .tier-price span {
+            color: #d4a520;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            margin-top: 1rem;
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(212, 165, 32, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 0.75rem;
+        }
+
+        .comparison-table h3 {
+            color: #d4a520;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 0.4rem 0.3rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(212, 165, 32, 0.1);
+        }
+
+        th {
+            background: rgba(212, 165, 32, 0.1);
+            color: #d4a520;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+        }
+
+        th:first-child, td:first-child {
+            text-align: center;
+            font-weight: 700;
+        }
+
+        td {
+            color: #c0c0c0;
+        }
+
+        .tier-label {
+            font-weight: 700;
+            color: #d4a520;
+        }
+
+        .tier-label.special {
+            color: #00d4ff;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(212, 165, 32, 0.2);
+            text-align: center;
+            font-size: 0.8rem;
+            color: #606060;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            text-align: left;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer a {
+            color: #d4a520;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 900px) {
+            .page {
+                width: 100%;
+                height: auto;
+                min-height: auto;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tiers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                font-size: 0.65rem;
+            }
+
+            th, td {
+                padding: 0.3rem 0.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1: Problem + Solution -->
+    <div class="page">
+        <div class="circuit-bg"></div>
+        <div class="content">
+            <div class="hero-section">
+                <h1>The Floor That Never Quits</h1>
+                <h2>Commercial-grade epoxy systems for 24/7 high-traffic environments</h2>
+
+                <div class="pain-points">
+                    <h3><i class="fas fa-exclamation-triangle"></i> The Problem</h3>
+                    <ul>
+                        <li>VCT tiles crack, peel, and show wear within 2-3 years</li>
+                        <li>Polished concrete stains and requires constant maintenance</li>
+                        <li>Carpet harbors bacteria, allergens, and degrades fast</li>
+                        <li>Downtime during recoating costs thousands per day</li>
+                    </ul>
+                </div>
+
+                <div class="solution-box">
+                    <h3><i class="fas fa-check-circle"></i> The Solution</h3>
+                    <p>Seamless epoxy flooring systems engineered for 1M+ footsteps per year</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-left">KMJK Group | Professional Epoxy Solutions</div>
+                <div class="footer-right">
+                    <a href="https://kmjk.pro">kmjk.pro</a> | 772-323-3776
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: Tier Breakdown -->
+    <div class="page">
+        <div class="circuit-bg"></div>
+        <div class="content">
+            <div class="tier-header">
+                <h2><i class="fas fa-layer-group"></i> Select Your System</h2>
+                <h2>Four tiers engineered for every commercial environment</h2>
+            </div>
+
+            <div class="tiers-grid">
+                <!-- Tier C -->
+                <div class="tier-card">
+                    <div class="tier-header-title">
+                        <div class="tier-badge">C</div>
+                        <span class="tier-name">Economy</span>
+                    </div>
+                    <div class="tier-subtitle">Basic Protection</div>
+                    <ul class="tier-features">
+                        <li>Standard Bisphenol A epoxy</li>
+                        <li>3-5 year lifespan</li>
+                        <li>Solid color only</li>
+                        <li>Heat resistant to 140°F</li>
+                        <li>Low-budget retail, storage areas</li>
+                    </ul>
+                    <div class="tier-price">$3-4 <span>/sq ft installed</span></div>
+                </div>
+
+                <!-- Tier B -->
+                <div class="tier-card">
+                    <div class="tier-header-title">
+                        <div class="tier-badge">B</div>
+                        <span class="tier-name">Professional</span>
+                    </div>
+                    <div class="tier-subtitle">Standard Commercial</div>
+                    <ul class="tier-features">
+                        <li>Bisphenol A/F blend with UV stabilizers</li>
+                        <li>Anti-slip aggregate available</li>
+                        <li>7-10 year lifespan</li>
+                        <li>Heat resistant to 180°F</li>
+                        <li>Offices, retail floors, corridors</li>
+                    </ul>
+                    <div class="tier-price">$5-7 <span>/sq ft installed</span></div>
+                </div>
+
+                <!-- Tier A -->
+                <div class="tier-card premium">
+                    <div class="tier-header-title">
+                        <div class="tier-badge">A</div>
+                        <span class="tier-name">Premium</span>
+                    </div>
+                    <div class="tier-subtitle">Heavy Commercial</div>
+                    <ul class="tier-features">
+                        <li>Novolac-enhanced formula</li>
+                        <li>Chemical resistance package</li>
+                        <li>10-15 year warranty</li>
+                        <li>Heat resistant to 250°F</li>
+                        <li>Hospital ER, airport terminals, malls</li>
+                    </ul>
+                    <div class="tier-price">$8-12 <span>/sq ft installed</span></div>
+                </div>
+
+                <!-- Special Tier -->
+                <div class="tier-card special">
+                    <div class="tier-header-title">
+                        <div class="tier-badge"><i class="fas fa-shield-virus"></i></div>
+                        <span class="tier-name">Antimicrobial</span>
+                    </div>
+                    <div class="tier-subtitle">Healthcare Grade</div>
+                    <ul class="tier-features">
+                        <li>Silver-ion antimicrobial additive</li>
+                        <li>Seamless, grout-free surface</li>
+                        <li>Meets healthcare sanitation standards</li>
+                        <li>15+ year lifespan</li>
+                        <li>Hospitals, clinics, food processing, labs</li>
+                    </ul>
+                    <div class="tier-price">$12-15 <span>/sq ft installed</span></div>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="comparison-table">
+                <h3><i class="fas fa-table"></i> Compare Tiers</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th>Lifespan</th>
+                            <th>Heat</th>
+                            <th>Key Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tier-label">C</td>
+                            <td>3-5 yrs</td>
+                            <td>140°F</td>
+                            <td>Basic protection, solid color</td>
+                        </tr>
+                        <tr>
+                            <td class="tier-label">B</td>
+                            <td>7-10 yrs</td>
+                            <td>180°F</td>
+                            <td>UV stabilized, anti-slip</td>
+                        </tr>
+                        <tr>
+                            <td class="tier-label">A</td>
+                            <td>10-15 yrs</td>
+                            <td>250°F</td>
+                            <td>Chemical resistant, Novolac</td>
+                        </tr>
+                        <tr>
+                            <td class="tier-label special"><i class="fas fa-star"></i> S</td>
+                            <td>15+ yrs</td>
+                            <td>250°F</td>
+                            <td>Silver-ion, healthcare grade</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="footer">
+                <div class="footer-left">KMJK Group | Professional Epoxy Solutions</div>
+                <div class="footer-right">
+                    <a href="https://kmjk.pro">kmjk.pro</a> | 772-323-3776
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
